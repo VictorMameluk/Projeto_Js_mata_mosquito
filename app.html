@@ -11,6 +11,11 @@
 </head>
 <body onresize="ajustaTamanhoTela()">
 
+	<!--
+		Como manipulei a img na DOM pode excluir essa linha, porém vou deixar aqui 
+		para estudo.
+	<img src="assets/mosquito.png" class="mosquito1">
+	-->
 	<div class="painel">
 		<div class="vidas">
 			<img src="assets/coracao_cheio.png">
@@ -20,6 +25,12 @@
 
 		<div class="cronometro"> Tempo restante: </div>
 	</div>
+
+	<!-- Coloquei essa função no final como debug já que o appendChild usa o body como referência
+		e o arquivo jogo.js está sendo lido no header, ou seja, o body ainda não foi lido por isso dar erro | Experimente retirar a função que irá ver o erro -->
+	<script> 
+		positionRandom () 
+	</script>
 
 </body>
 </html>
