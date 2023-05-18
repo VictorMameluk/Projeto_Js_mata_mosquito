@@ -1,0 +1,27 @@
+body{
+	background-image: url(assets/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.painel{
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	background-color:#FFFFFF;
+	border: 1px solid #FFFFFF;
+	opacity:0.8;
+	width: 190px;
+	padding: 10px;
+	
+}
+
+.vidas{
+	float: left;
+}
+
+.cronometro {
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+}
