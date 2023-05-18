@@ -17,9 +17,15 @@ ajustaTamanhoTela()
 function positionRandom (){
 	//Aqui estou usando o objeto Math.random para gerar números aleátorios dentro do viewport.
 	//Depois encapsulei dentro do Math.floor para arrendondar para baixo os números decimais gerados.
+	//Incluir um decremento de -90px para forçar a img "mosquito.png" ser randômica dentro do viewport com limite de 90px para não ultrapassar e a img ficar do "lado de fora" 
 
-	var positionX = Math.floor(Math.random() * lar)
-	var positionY = Math.floor(Math.random() * alt)
+	var positionX = Math.floor(Math.random() * lar) - 90
+	var positionY = Math.floor(Math.random() * alt) - 90
+
+	// Usado para debug / se posiçao < 0 recebe 0 senão recebe ela mesmo
+	//Fiz esse controle pelo fato de ter colocado -90px e as vezes gerado número negativo fazendo com que a img "mosquito.png" saisse do viewport
+	positionX = positionX < 0 ? 0 : positionX
+	positionY = positionY < 0 ? 0 : positionY
 
 	console.log(positionX, positionY)
 
