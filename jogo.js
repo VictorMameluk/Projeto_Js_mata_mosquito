@@ -15,6 +15,13 @@ ajustaTamanhoTela()
 
 
 function positionRandom (){
+
+	//Remover o mosquito anterior (caso exista)
+
+	if(document.getElementById('mosquito')){
+		document.getElementById('mosquito').remove()
+	}
+
 	//Aqui estou usando o objeto Math.random para gerar números aleátorios dentro do viewport.
 	//Depois encapsulei dentro do Math.floor para arrendondar para baixo os números decimais gerados.
 	//Incluir um decremento de -90px para forçar a img "mosquito.png" ser randômica dentro do viewport com limite de 90px para não ultrapassar e a img ficar do "lado de fora" 
@@ -37,17 +44,23 @@ function positionRandom (){
 
 	var mosquito = document.createElement('img')	
 	mosquito.src = 'assets/mosquito.png'
-	mosquito.className = tamanhoAleatorioMosquito()
+	mosquito.className = tamanhoAleatorioMosquito() + ' ' + ladoAleatorio()
 	mosquito.style.left = positionX + 'px'
 	mosquito.style.top = positionY + 'px'
 	mosquito.style.position = 'absolute'
+	mosquito.id = 'mosquito'
 
 	//Aqui eu acesso o body e adiciono um filho "appendChild"
 	document.body.appendChild(mosquito)
 
 	console.log(tamanhoAleatorioMosquito())
 
+	console.log(ladoAleatorio())
+
 }
+
+
+//Fazer o mosquito aparecer aleatoriamente no viewport
 
 function tamanhoAleatorioMosquito(){
 	var classe = Math.floor(Math.random() * 3)
@@ -63,4 +76,23 @@ function tamanhoAleatorioMosquito(){
 
 }
 
+// Virar o mosquito ao contrário
 
+function ladoAleatorio(){
+	var classe = Math.floor(Math.random() *2)
+
+		switch(classe){
+		case 0:
+			return 'ladoA'
+		case 1:
+			return 'ladoB'
+		}
+}
+
+setInterval(function(){
+	positionRandom()
+},1000)
+
+function paradaIntervalo(){
+	clearInterval(positionRandom())
+}
