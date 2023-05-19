@@ -2,6 +2,7 @@
 //Vamos usar img "mosquito" de forma randômica e dessa forma a img só aparecerá na tela do browser nos eixos (x e y)
 var alt = 0
 var lar = 0
+var vidas = 1
 
 function ajustaTamanhoTela(){
 	lar = window.innerWidth
@@ -20,6 +21,14 @@ function positionRandom (){
 
 	if(document.getElementById('mosquito')){
 		document.getElementById('mosquito').remove()
+
+		if(vidas > 3){
+			alert('game over')
+		}else{
+		document.getElementById('v' + vidas).src = "assets/coracao_vazio.png"
+
+		vidas++
+		}
 	}
 
 	//Aqui estou usando o objeto Math.random para gerar números aleátorios dentro do viewport.
@@ -49,6 +58,9 @@ function positionRandom (){
 	mosquito.style.top = positionY + 'px'
 	mosquito.style.position = 'absolute'
 	mosquito.id = 'mosquito'
+	mosquito.onclick = function(){
+		this.remove()
+	}
 
 	//Aqui eu acesso o body e adiciono um filho "appendChild"
 	document.body.appendChild(mosquito)
