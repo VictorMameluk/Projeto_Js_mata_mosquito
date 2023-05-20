@@ -23,13 +23,22 @@
 			<img id="v3" src="assets/coracao_cheio.png">
 		</div>
 
-		<div class="cronometro"> Tempo restante: </div>
+		<div class="cronometro"> Tempo restante: <span id="cronometro"></span> </div>
 	</div>
 
 	<!-- Coloquei essa função no final como debug já que o appendChild usa o body como referência
 		e o arquivo jogo.js está sendo lido no header, ou seja, o body ainda não foi lido por isso dar erro | Experimente retirar a função que irá ver o erro -->
 	<script> 
-		positionRandom () 
+
+		//manipulei a DOM aqui para que o cronômetro inicie no tempo certo
+		//Ex. A contagem inicia no numero 15 por causa desse debug senão tiver ele a contagem já inicia no 14
+		document.getElementById('cronometro').innerHTML = tempo
+
+		var criaMosquito = setInterval(function(){
+			positionRandom()
+		}, tempoMosquito)
+
+
 	</script>
 
 </body>

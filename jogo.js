@@ -1,8 +1,30 @@
+
 //Usei o evento window.inner para saber o tamanho do viewport(janela de exibição)
 //Vamos usar img "mosquito" de forma randômica e dessa forma a img só aparecerá na tela do browser nos eixos (x e y)
 var alt = 0
 var lar = 0
 var vidas = 1
+var tempo = 15
+var tempoMosquito = 1500
+
+
+
+// O search recupera nossa Query string (tudo que esta a direita na url após a interrogação, inclusive ela)
+var nivel = window.location.search
+nivel = nivel.replace('?', '')
+
+if(nivel === 'Normal'){
+	//1500
+	tempoMosquito = 1500
+} else if( nivel === 'Difícil'){
+	//1000
+	tempoMosquito = 1000
+} else if(nivel === 'Chucknorris'){
+	//750
+	tempoMosquito = 750
+}
+
+
 
 function ajustaTamanhoTela(){
 	lar = window.innerWidth
@@ -13,6 +35,22 @@ function ajustaTamanhoTela(){
 }
 
 ajustaTamanhoTela()
+
+// *************** Cronometrar o tempo ***************
+
+var cronometro = setInterval(function(){
+
+	tempo -= 1
+
+	if (tempo < 0){
+		clearInterval(cronometro)
+		clearInterval(criaMosquito)
+		window.location.href = 'vitoria.html'
+	} else{
+		document.getElementById('cronometro').innerHTML = tempo
+	}
+	
+}, 1000)
 
 
 function positionRandom (){
@@ -65,6 +103,7 @@ function positionRandom (){
 	//Aqui eu acesso o body e adiciono um filho "appendChild"
 	document.body.appendChild(mosquito)
 
+	//Console.log só deixei para estudos
 	console.log(tamanhoAleatorioMosquito())
 
 	console.log(ladoAleatorio())
@@ -101,10 +140,6 @@ function ladoAleatorio(){
 		}
 }
 
-setInterval(function(){
-	positionRandom()
-},1000)
 
-function paradaIntervalo(){
-	clearInterval(positionRandom())
-}
+
+

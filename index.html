@@ -5,10 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<title> App Mata Mosquito </title>
+
+	<script >
+		function iniciarJogo(){
+			var nivel = document.getElementById('nivel').value
+
+			if(nivel === ''){
+				alert('Selecione o nível para iniciar o jogo')
+				return false
+			}
+
+			// O sinal de ? serve para separar a página que vamos requisitar(index) dos parâmetros encaminhados (nivel)
+			window.location.href = 'app.html?' + nivel
+
+		}
+
+	</script>
 </head>
 <body>
 
@@ -27,9 +42,9 @@
 					<div class="mb-2">
 						<select class="form-control" id="nivel">
 							<option value=""> -- Selecione o nível -- </option>
-							<option value="facil"> Fácil </option>
-							<option value="dificil"> Difícil </option>
-							<option value="chucknorris"> Chuck Norris </option>
+							<option value="Normal"> Normal </option>
+							<option value="Difícil"> Difícil </option>
+							<option value="Chucknorris"> Chuck Norris </option>
 						</select>
 					</div>
 				</div>
@@ -39,7 +54,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="d-flex justify-content-center">
-					<button type="button" class="btn btn-danger btn-lg" onclick=""> Iniciar o jogo </button>
+					<button type="button" class="btn btn-danger btn-lg" onclick="iniciarJogo()"> Iniciar o jogo </button>
 				</div>
 			</div>
 		</div>
